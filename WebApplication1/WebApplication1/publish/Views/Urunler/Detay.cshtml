@@ -1,0 +1,83 @@
+@model WebApplication1.Models.Urun
+@{
+    ViewData["Title"] = "Ürün Detayı";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3>Ürün Detayı</h3>
+                    <div>
+                        <a href="@Url.Action("Duzenle", "Urun", new { id = Model.Id })" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Düzenle
+                        </a>
+                        <a href="@Url.Action("Index", "Urun")" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-list"></i> Listeye Dön
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th width="30%">ID:</th>
+                                    <td>@Model.Id</td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Adı:</th>
+                                    <td>@Model.Isim</td>
+                                </tr>
+                                <tr>
+                                    <th>Beden:</th>
+                                    <td>
+                                        <span class="badge bg-primary">@Model.Beden</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Renk:</th>
+                                    <td>@Model.Renk</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th width="30%">Fiyat:</th>
+                                    <td>
+                                        <span class="h5 text-success">@Model.Fiyat.ToString("C")</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Stok:</th>
+                                    <td>
+                                        <span class="badge @(Model.StokMiktari > 0 ? "bg-success" : "bg-danger") fs-6">
+                                            @Model.StokMiktari adet
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Eklenme Tarihi:</th>
+                                    <td>@Model.EklenmeTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    @if (!string.IsNullOrEmpty(Model.Aciklama))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-12">
+                                <h5>Açıklama:</h5>
+                                <p class="text-muted">@Model.Aciklama</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

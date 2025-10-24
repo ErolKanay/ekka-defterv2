@@ -1,0 +1,157 @@
+@model WebApplication1.Models.Urun
+@{
+    ViewData["Title"] = "Yeni Ürün Ekle";
+}
+
+<div class="container-fluid">
+    <!-- Sayfa Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h3 mb-0 text-gray-800">
+                        <i class="fas fa-plus text-success me-2"></i>
+                        Yeni Ürün Ekle
+                    </h1>
+                    <p class="text-muted mb-0">Yeni ürün bilgilerini girin</p>
+                </div>
+                <div>
+                    <a href="@Url.Action("Index", "Urun")" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Geri Dön
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-edit me-2"></i>Ürün Bilgileri
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Ekle" method="post" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        <input asp-for="Id" type="hidden" value="0" />
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="UrunAdi" class="form-label">
+                                    <i class="fas fa-tag me-1"></i>Ürün Adı
+                                </label>
+                                <input asp-for="UrunAdi" class="form-control" placeholder="Ürün adını girin" required />
+                                <span asp-validation-for="UrunAdi" class="text-danger"></span>
+                                <div class="invalid-feedback">
+                                    Lütfen ürün adını girin.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Fiyati" class="form-label">
+                                    <i class="fas fa-lira-sign me-1"></i>Fiyatı
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₺</span>
+                                    <input asp-for="Fiyati" type="number" step="0.01" class="form-control" placeholder="0.00" required />
+                                </div>
+                                <span asp-validation-for="Fiyati" class="text-danger"></span>
+                                <div class="invalid-feedback">
+                                    Lütfen geçerli bir fiyat girin.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Bedeni" class="form-label">
+                                    <i class="fas fa-ruler me-1"></i>Bedeni
+                                </label>
+                                <select asp-for="Bedeni" class="form-select" required>
+                                    <option value="">Bedeni seçin</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="XXXL">XXXL</option>
+                                </select>
+                                <span asp-validation-for="Bedeni" class="text-danger"></span>
+                                <div class="invalid-feedback">
+                                    Lütfen bedeni seçin.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="OdemeBilgisi" class="form-label">
+                                    <i class="fas fa-credit-card me-1"></i>Ödeme Bilgisi
+                                </label>
+                                <select asp-for="OdemeBilgisi" class="form-select" required>
+                                    <option value="">Ödeme türünü seçin</option>
+                                    <option value="Nakit">Nakit</option>
+                                    <option value="Kredi Kartı">Kredi Kartı</option>
+                                    <option value="Banka Kartı">Banka Kartı</option>
+                                    <option value="Havale">Havale</option>
+                                    <option value="EFT">EFT</option>
+                                    <option value="Çek">Çek</option>
+                                </select>
+                                <span asp-validation-for="OdemeBilgisi" class="text-danger"></span>
+                                <div class="invalid-feedback">
+                                    Lütfen ödeme türünü seçin.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="OdemeTarihi" class="form-label">
+                                    <i class="fas fa-calendar me-1"></i>Ödeme Tarihi
+                                </label>
+                                <input asp-for="OdemeTarihi" type="date" class="form-control" required />
+                                <span asp-validation-for="OdemeTarihi" class="text-danger"></span>
+                                <div class="invalid-feedback">
+                                    Lütfen ödeme tarihini seçin.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="@Url.Action("Index")" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-times me-2"></i>İptal
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save me-2"></i>Ürün Ekle
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Form validation
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

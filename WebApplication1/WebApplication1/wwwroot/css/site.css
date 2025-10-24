@@ -1,0 +1,300 @@
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+  color: #0077cc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+/* Modern Dashboard Stilleri */
+body {
+  background-color: #faf5e0 !important;
+  font-family: 'Nunito', sans-serif;
+}
+
+html {
+  background-color: #faf5e0 !important;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #2c3e50 !important;
+}
+
+.navbar-brand i {
+  margin-right: 8px;
+  color: #e74c3c;
+}
+
+/* Dashboard Kartları */
+.card {
+  border: none;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  background-color: #faf5e0;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.25rem 2rem 0 rgba(58, 59, 69, 0.2);
+}
+
+.card-header {
+  background-color: #154f37;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: 600;
+  color: white;
+}
+
+/* İstatistik Kartları */
+.border-left-primary {
+  border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+  border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-info {
+  border-left: 0.25rem solid #36b9cc !important;
+}
+
+.border-left-warning {
+  border-left: 0.25rem solid #f6c23e !important;
+}
+
+.text-gray-800 {
+  color: #5a5c69 !important;
+}
+
+.text-gray-300 {
+  color: #dddfeb !important;
+}
+
+.text-xs {
+  font-size: 0.7rem;
+}
+
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+
+/* Butonlar */
+.btn {
+  border-radius: 0.35rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: #154f37;
+  border-color: #154f37;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0f3a2a;
+  border-color: #0f3a2a;
+}
+
+.btn-success {
+  background: linear-gradient(45deg, #1cc88a, #17a673);
+  border: none;
+}
+
+.btn-outline-primary {
+  border-color: #4e73df;
+  color: #4e73df;
+}
+
+.btn-outline-primary:hover {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+
+/* Tablo Stilleri */
+.table {
+  background-color: #faf5e0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.table th {
+  border-top: none;
+  font-weight: 600;
+  color: #495057;
+  background-color: #faf5e0;
+  border-bottom: 2px solid #e3e6f0;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #faf5e0;
+}
+
+/* Form Stilleri */
+.form-control {
+  border-radius: 0.35rem;
+  border: 1px solid #d1d3e2;
+  transition: all 0.3s ease;
+  background-color: #f7f3e9;
+}
+
+.form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Tablo Sıralama */
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.sortable:hover {
+  background-color: #faf5e0;
+}
+
+.sortable::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #6c757d;
+  opacity: 0.5;
+}
+
+.sort-asc::after {
+  border-top: none;
+  border-bottom: 4px solid #4e73df;
+  opacity: 1;
+}
+
+.sort-desc::after {
+  border-top: 4px solid #4e73df;
+  opacity: 1;
+}
+
+/* Badge Stilleri */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+}
+
+.bg-success {
+  background-color: #1cc88a !important;
+}
+
+.bg-info {
+  background-color: #36b9cc !important;
+}
+
+/* Renk Sınıfları */
+.text-primary {
+  color: #154f37 !important;
+}
+
+.bg-primary {
+  background-color: #154f37 !important;
+}
+
+.border-left-primary {
+  border-left: 0.25rem solid #154f37 !important;
+}
+
+/* Input Group */
+.input-group-text {
+  background-color: #faf5e0;
+  border-color: #d1d3e2;
+  color: #5a5c69;
+}
