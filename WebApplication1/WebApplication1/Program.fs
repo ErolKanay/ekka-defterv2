@@ -64,6 +64,10 @@ module Program =
             dbContext.Database.EnsureCreated() |> ignore
             printfn "Veritabanı tabloları başarıyla oluşturuldu"
             
+            // ID sequence'ini sıfırla
+            dbContext.Database.ExecuteSqlRaw("ALTER SEQUENCE \"Urunler_Id_seq\" RESTART WITH 1") |> ignore
+            printfn "ID sequence sıfırlandı"
+            
             printfn "Veritabanı hazır - yeni schema ile"
         with
         | ex -> printfn "Veritabanı oluşturma hatası: %s" ex.Message
