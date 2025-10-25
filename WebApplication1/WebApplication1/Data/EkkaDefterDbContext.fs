@@ -18,4 +18,5 @@ type EkkaDefterDbContext(options: DbContextOptions<EkkaDefterDbContext>) =
             entity.Property(fun u -> u.Bedeni).IsRequired().HasMaxLength(20) |> ignore
             entity.Property(fun u -> u.OdemeBilgisi).IsRequired().HasMaxLength(100) |> ignore
             entity.Property(fun u -> u.OdemeTarihi).IsRequired() |> ignore
+            entity.Property(fun u -> u.AlanKisiAdi).IsRequired().HasMaxLength(100) |> ignore
         ) |> ignore

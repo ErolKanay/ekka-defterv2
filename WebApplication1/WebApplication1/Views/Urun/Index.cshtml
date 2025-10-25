@@ -81,6 +81,9 @@
                                         <th data-sort="tarih" class="sortable">
                                             <i class="fas fa-calendar me-1"></i>Ödeme Tarihi
                                         </th>
+                                        <th data-sort="alan-kisi" class="sortable">
+                                            <i class="fas fa-user me-1"></i>Alan Kişi
+                                        </th>
                                         <th class="text-center">
                                             <i class="fas fa-cogs me-1"></i>İşlemler
                                         </th>
@@ -102,6 +105,9 @@
                                             </td>
                                             <td data-sort="odeme-bilgisi">@urun.OdemeBilgisi</td>
                                             <td data-sort="tarih">@urun.OdemeTarihi.ToString("dd.MM.yyyy")</td>
+                                            <td data-sort="alan-kisi">
+                                                <span class="badge bg-secondary">@urun.AlanKisiAdi</span>
+                                            </td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group">
                                                     <a href="@Url.Action("Detay", "Urun", new { id = urun.Id })" 

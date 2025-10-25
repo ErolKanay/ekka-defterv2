@@ -107,7 +107,7 @@
                         </div>
                         
                         <div class="row">
-                            <div class="col-md-6 mb-4">
+                            <div class="col-md-6 mb-3">
                                 <label asp-for="OdemeTarihi" class="form-label">
                                     <i class="fas fa-calendar me-1"></i>Ödeme Tarihi
                                 </label>
@@ -115,6 +115,17 @@
                                 <span asp-validation-for="OdemeTarihi" class="text-danger"></span>
                                 <div class="invalid-feedback">
                                     Lütfen ödeme tarihini seçin.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="AlanKisiAdi" class="form-label">
+                                    <i class="fas fa-user me-1"></i>Alan Kişinin Adı
+                                </label>
+                                <input asp-for="AlanKisiAdi" class="form-control" placeholder="Alan kişinin adını girin" required />
+                                <span asp-validation-for="AlanKisiAdi" class="text-danger"></span>
+                                <div class="invalid-feedback">
+                                    Lütfen alan kişinin adını girin.
                                 </div>
                             </div>
                         </div>

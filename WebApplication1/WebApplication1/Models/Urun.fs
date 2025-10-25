@@ -19,4 +19,7 @@ type Urun = {
     OdemeBilgisi: string
     [<Required>]
     OdemeTarihi: System.DateTime
+    [<Required>]
+    [<StringLength(100)>]
+    AlanKisiAdi: string
 }
