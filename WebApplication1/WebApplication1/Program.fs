@@ -53,13 +53,22 @@ module Program =
 
         let app = builder.Build()
 
-        // Veritabanı
+        // Veritabanı migration'larını çalıştır
         use scope = app.Services.CreateScope()
         let dbContext = scope.ServiceProvider.GetRequiredService<EkkaDefterDbContext>()
         try
-            dbContext.Database.EnsureCreated() |> ignore
+            // Database'i oluştur ve migration'ları uygula
+            dbContext.Database.Migrate() |> ignore
+            printfn "Veritabanı migration'ları başarıyla uygulandı"
         with
-        | ex -> printfn "Veritabanı oluşturma hatası: %s" ex.Message
+        | ex -> 
+            printfn "Veritabanı migration hatası: %s" ex.Message
+            // Fallback olarak EnsureCreated kullan
+            try
+                dbContext.Database.EnsureCreated() |> ignore
+                printfn "Veritabanı EnsureCreated ile oluşturuldu"
+            with
+            | ex2 -> printfn "Veritabanı oluşturma hatası: %s" ex2.Message
 
         if not (builder.Environment.IsDevelopment()) then
             app.UseExceptionHandler("/Home/Error")
