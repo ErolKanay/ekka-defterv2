@@ -8,7 +8,7 @@ open WebApplication1.Models
 open System.Linq
 open System
 
-[<Authorize>]
+// [<Authorize>] // Geçici olarak kapatıldı
 type UrunController(dbContext: EkkaDefterDbContext) =
     inherit Controller()
 
