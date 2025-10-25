@@ -57,15 +57,14 @@ module Program =
         use scope = app.Services.CreateScope()
         let dbContext = scope.ServiceProvider.GetRequiredService<EkkaDefterDbContext>()
         try
-            // Önce EnsureCreated ile tabloları oluştur
+            // Database'i sil ve yeniden oluştur (schema değişikliği için)
+            dbContext.Database.EnsureDeleted() |> ignore
+            printfn "Eski veritabanı silindi"
+            
             dbContext.Database.EnsureCreated() |> ignore
             printfn "Veritabanı tabloları başarıyla oluşturuldu"
             
-            // Eğer tablolar boşsa, örnek veri ekle
-            if not (dbContext.Urunler.Any()) then
-                printfn "Veritabanı boş, örnek veri ekleniyor..."
-                // Burada örnek veri ekleyebiliriz
-                printfn "Veritabanı hazır"
+            printfn "Veritabanı hazır - yeni schema ile"
         with
         | ex -> printfn "Veritabanı oluşturma hatası: %s" ex.Message
 
