@@ -31,8 +31,14 @@ module Program =
             .AddControllersWithViews()
             .AddRazorRuntimeCompilation()
 
+        // Railway için DATABASE_URL environment variable'ını kullan
+        let connectionString = 
+            match Environment.GetEnvironmentVariable("DATABASE_URL") with
+            | null -> builder.Configuration.GetConnectionString("DefaultConnection")
+            | url -> url
+        
         builder.Services.AddDbContext<EkkaDefterDbContext>(fun options ->
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) |> ignore
+            options.UseNpgsql(connectionString) |> ignore
         )
 
         // Authentication servislerini ekle
