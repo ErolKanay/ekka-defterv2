@@ -24,8 +24,14 @@ type UrunController(dbContext: EkkaDefterDbContext) =
     [<HttpPost("ekle")>]
     member this.Ekle(urun: Urun) =
         if this.ModelState.IsValid then
-            // Id'yi 0 yaparak auto-increment'i tetikle
-            let yeniUrun = { urun with Id = 0 }
+            // Id'yi 0 yaparak auto-increment'i tetikle ve DateTime'ı UTC'ye çevir
+            let yeniUrun = { 
+                urun with 
+                    Id = 0
+                    OdemeTarihi = if urun.OdemeTarihi.Kind = DateTimeKind.Unspecified 
+                                  then DateTime.SpecifyKind(urun.OdemeTarihi, DateTimeKind.Utc)
+                                  else urun.OdemeTarihi.ToUniversalTime()
+            }
             dbContext.Urunler.Add(yeniUrun) |> ignore
             dbContext.SaveChanges() |> ignore
             this.RedirectToAction("Index") :> IActionResult
